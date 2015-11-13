@@ -18,11 +18,9 @@ We may also move this repository somewhere else, because we dislike the propriet
 nature of GitHub.
 -->
 
-**[EDIT:** *Currently `openLilyLib` is undergoing a fundamental reorganization.  
-The below README contents is about the* current *implementation as a 
-collection of arbitrary snippets.  
-The new structure as a collection of targeted libraries can be found inside
-the `ly` directory.]*
+**NOTE:** There is a top-level directory `ly` containing an initial implementation
+of a proper library infrastructure.  This is deprecated and will be moved to a
+separate repository.
 
 Contents
 ========
@@ -85,7 +83,7 @@ You can make the root directory of the repository available to LilyPond,
 e.g. by using the `-I` or `--include=` command line option (or, if you use
 Frescobaldi, add the path in _LilyPond preferences_).  
 Then you will be able to `\include` the snippets with a path relative to
-the repository root directory - for example, 
+the repository root directory - for example,
 `\include "debugging-layout/display-grob-anchors/definitions.ily"`
 will allow you to use `\printAnchors` function defined in the snippet.
 Frescobaldi also supports autocompletion if you have added the repository
