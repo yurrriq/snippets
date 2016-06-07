@@ -55,10 +55,8 @@
 % after \clralist <name> the variable <name> is initialized with an empty list
 #(define-public clralist
    (define-void-function (parser location alst)(symbol?)
-     (if (lilypond-greater-than? "2.19.21")
-         (ly:parser-define! alst (list))
-         (ly:parser-define! parser alst (list)))
-     ))
+     (oll:parser-define! parser alst (list))))
+
 % sets one value - replaces the value and leaves the order of elements, if <name> is already present
 #(define-public setalist
   (define-void-function (parser location alst name val)(symbol? symbol? scheme?)
@@ -74,9 +72,8 @@
                          p
                          )) l))
       (if setv (set! l (append l (list (cons name val)))))
-      (if (lilypond-greater-than? "2.19.21")
-          (ly:parser-define! alst l)
-          (ly:parser-define! parser alst l)))))
+      (oll:parser-define! parser alist l))))
+
 % sets one value - <name> is always placed at the end of the list
 #(define-public addalist
   (define-void-function (parser location alst name val)
@@ -85,22 +82,16 @@
                  (ly:parser-lookup alst)
                  (ly:parser-lookup parser alst))))
       (set! l (filter (lambda (p) (and (pair? p)(not (equal? (car p) name)))) l))
-      (if (lilypond-greater-than? "2.19.21")
-          (ly:parser-define! alst (append l (list (cons name val))))
-          (ly:parser-define! parser alst (append l (list (cons name val)))))
-      )))
+      (oll:parser-define! parser alst (append l (list (cons name val)))))))
+
 % removes one entry from association list
 #(define-public remalist
   (define-void-function (parser location alst name)(symbol? symbol?)
     (let ((l (if (lilypond-greater-than? "2.19.21")
                  (ly:parser-lookup alst)
                  (ly:parser-lookup parser alst))))
-      (if (lilypond-greater-than? "2.19.21")
-          (ly:parser-define! alst
-            (filter (lambda (p) (and (pair? p)(not (equal? (car p) name)))) l))
-          (ly:parser-define! parser alst
-            (filter (lambda (p) (and (pair? p)(not (equal? (car p) name)))) l)))
-      )))
+      (oll:parser-define! parser alst
+        (filter (lambda (p) (and (pair? p)(not (equal? (car p) name)))) l)))))
 
 % get entry from nested a-list
 #(define-public (get-a-tree parser location name path)
@@ -153,10 +144,8 @@
               )
             )))
     (set! opts (setval opts sympath))
-     (if (lilypond-greater-than? "2.19.21")
-         (ly:parser-define! name opts)
-         (ly:parser-define! parser name opts))
-     ))
+     (oll:parser-define! parser name opts)))
+
 % remove an entry from a nested a-list
 #(define (rem-a-tree parser location name sympath)
   (if (not (symbol? name)) (set! name (string->symbol (object->string name))))
@@ -176,10 +165,7 @@
             )
         ))
     (set! opts (remval opts sympath))
-    (if (lilypond-greater-than? "2.19.21")
-        (ly:parser-define! name opts)
-        (ly:parser-define! parser name opts))
-    ))
+    (oll:parser-define! parser name opts)))
 
 % clear/create an empty a-list
 #(define-public clratree clralist)

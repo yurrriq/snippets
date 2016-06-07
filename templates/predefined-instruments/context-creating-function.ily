@@ -1,5 +1,7 @@
 \version "2.19.10"
 
+\include "openlilylib"
+
 %{ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESCRIPTION
 
 As written in the README (see https://github.com/openlilylib/openlilylib/blob/master/templates/predefined-instruments/),
@@ -48,7 +50,7 @@ newInstrument =
          (parent-name (if (string=? parent-name "default") "" parent-name))
          (parent-staff-name (string-append parent-name "Staff"))
          (parent-voice-name (string-append parent-name "Voice")))
-    (ly:parser-define! parser '$defaultlayout
+    (oll:parser-define! parser '$defaultlayout
       #{
         \layout {
           \context {
@@ -82,7 +84,7 @@ newInstrument =
         }
       #})
     ;; UGH! code duplication!
-    (ly:parser-define! parser '$defaultmidi
+    (oll:parser-define! parser '$defaultmidi
       #{
         \midi {
           \context {

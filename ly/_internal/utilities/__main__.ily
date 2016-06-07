@@ -35,6 +35,16 @@
 %%%% Common functionality
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#(define (oll:parser-define! parser name opts)
+   (if (lilypond-greater-than? "2.19.21")
+       (ly:parser-define! name opts)
+       (ly:parser-define! parser name opts)))
+
+#(define (oll:parser-include-string parser str)
+   (if (lilypond-greater-than? "2.19.21")
+       (ly:parser-include-string str)
+       (ly:parser-include-string parser str)))
+
 % A collection of general-purpose predicates
 \include "general-predicates.ily"
 

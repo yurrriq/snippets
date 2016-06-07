@@ -24,8 +24,7 @@
 ollRedirect =
 #(define-void-function (parser location old-name new-location)
    (string? string?)
-   (ly:parser-include-string parser
-     (format "\\include \"ly/~a\"" new-location))
+   (oll:parser-include-string parser (format "\\include \"ly/~a\"" new-location))
    (ly:warning
     (format "
 
