@@ -21,7 +21,7 @@
      #:roman "Permanent Marker"
      #:sans "Pea Missy with a Marker"
      #:typewriter "Thickmarker"
-     #:factor 0.9)) % (/ staff-height pt 20)))
+     #:factor (/ staff-height pt 20))) % 0.9
 }
 
 \layout {
