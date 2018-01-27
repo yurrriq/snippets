@@ -202,16 +202,18 @@ napGuitar =
 napBass =
 #(define-music-function
    (parser location) ()
-   (if (and (part-missing? "vox") (part-missing? "guitar"))
-       #{
-         \new BassVoice = bass <<
-           { \gridGetMusic "meta" }
-           { \gridGetMusic "bass"  }
-         >>
-       #}
-       #{
-         \new BassVoice = bass \gridGetMusic "bass"
-       #}))
+   (if (part-missing? "bass")
+        (begin (ly:debug "No bass part") #{ #})
+        (if (and (part-missing? "vox") (part-missing? "guitar"))
+            #{
+              \new BassVoice = bass <<
+                { \gridGetMusic "meta" }
+                { \gridGetMusic "bass"  }
+              >>
+            #}
+            #{
+              \new BassVoice = bass \gridGetMusic "bass"
+            #})))
 
 %%% ================================================================== [ Drums ]
 
