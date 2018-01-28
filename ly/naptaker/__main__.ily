@@ -1,6 +1,6 @@
 %%% =========================================================== [ __main__.ily ]
 %%% Description: Naptaker - Engraving Naptaker scores with GNU LilyPond
-%%% Copyright:   (c) 2016-2017 Eric Bailey
+%%% Copyright:   (c) 2016-2018 Eric Bailey
 %%% TODO: License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
