@@ -16,8 +16,8 @@
 \paper {
   #(define fonts
     (set-global-fonts
-     #:music "Improviso"
-     #:brace "Improviso"
+     #:music "improviso"
+     #:brace "improviso"
      #:roman "Permanent Marker"
      #:sans "Pea Missy with a Marker"
      #:typewriter "Thickmarker"
