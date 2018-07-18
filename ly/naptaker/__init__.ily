@@ -6,7 +6,7 @@
 
 \declareLibrary "Naptaker" \with {
   maintainers = #'("Eric Bailey <naptakerband@gmail.com>")
-  version = "0.2.0"
+  version = "0.3.0"
   short-description = "Engraving Naptaker scores with GNU LilyPond"
   description = "Longer description, used as an introduction to the library."
   % The following option is "unreal" and only used to demonstrate "known options"

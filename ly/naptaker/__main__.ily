@@ -308,8 +308,8 @@ Naptaker =
    (let ((score #{
            \score {
              <<
-               \napChords
                \napVox
+               \napChords
                \napGuitar
                \napBass
                \napDrums
