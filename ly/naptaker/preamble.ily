@@ -1,5 +1,7 @@
 fuzzOn     = \set midiInstrument = #"overdriven guitar"
+
 fuzzOff    = \set midiInstrument = #"electric guitar (clean)"
+
 
 xOn  = {
   \deadNotesOn
@@ -7,6 +9,7 @@ xOn  = {
   \omit ChordName
   \omit FretBoard
 }
+
 xOff = {
   \deadNotesOff
   \set midiInstrument = #"electric guitar (clean)"
@@ -14,6 +17,7 @@ xOff = {
   \undo \omit FretBoard
   \once \once \set chordChanges = ##f
 }
+
 
 %% Basically \hideNotes, except deliberately excluding TabNoteHead
 hideNotesNotTabStaff = {
@@ -35,9 +39,11 @@ hideNotesNotTabStaff = {
   \omit Staff.Slur \omit Staff.Tie
 }
 
+
 dead = {
   \once \deadNotesOn
 }
+
 
 stopStaffNotTabStaff = {
   \stopStaff
@@ -47,6 +53,7 @@ stopStaffNotTabStaff = {
   #(context-spec-music #{ \startStaff \undo \omit Staff.Clef #} 'TabStaff)
   \hideNotesNotTabStaff
 }
+
 
 restartStaff = {
   \once \omit Staff.BarLine
@@ -65,11 +72,13 @@ restartStaff = {
   %% \once \override Staff.BarLine.break-visibility = #end-of-line-invisible
 }
 
+
 gridGetCellMusic =
 #(define-music-function (parser location part segment) (string? number?)
    (check-grid)
    (check-coords part segment)
    (cell:music (get-music-cell part segment)))
+
 
 %% https://bitbucket.org/sinbad/drum-music/src/0ef24490e1b6ef4704539f561886a076d594608a/sjs_drumconfig.ly?at=master&fileviewer=file-view-default
 flam = \drummode {

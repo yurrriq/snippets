@@ -13,6 +13,7 @@
 
 \version "2.19.12"
 
+
 \paper {
   #(define fonts
     (set-global-fonts
@@ -23,6 +24,7 @@
      #:typewriter "Thickmarker"
      #:factor (/ staff-height pt 20))) % 0.9
 }
+
 
 \layout {
   \override Staff.Beam.beam-thickness = #0.5

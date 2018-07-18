@@ -2,6 +2,9 @@
 
 \include "templates/predefined-instruments/context-creating-function.ily"
 
+
+%%% ==================================================================== [ Vox ]
+
 \newInstrument "Vox"
 \with {
   instrumentName = "Vocals"
@@ -15,6 +18,9 @@
   midiInstrument = "voice oohs"
 }
 "default"
+
+
+%%% ================================================================= [ Guitar ]
 
 \newInstrument "Guitar"
 \with {
@@ -33,6 +39,9 @@
 }
 "default"
 
+
+%%% =================================================================== [ Bass ]
+
 \newInstrument "Bass"
 \with {
   instrumentName = "Bass"
@@ -47,3 +56,6 @@
   midiInstrument = "electric bass (finger)"
 }
 "default"
+
+
+%%% ==================================================================== [ EOF ]

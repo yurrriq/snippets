@@ -6,6 +6,7 @@
 
 \version "2.19.24"
 
+
 %%%=========================================================== [ Paper Config ]
 
 napPaper =
@@ -18,6 +19,7 @@ napPaper =
     #{ \getOption naptaker.paper-orientation #})
    (set-global-staff-size #{ \getOption naptaker.staff-size #}))
 
+
 %%% ======================================================= [ Helper Functions ]
 
 #(define (part-missing? part)
@@ -26,7 +28,8 @@ napPaper =
                    (num-segments (hash-ref music-grid-meta #:segments)))
                (do ((seg 1 (1+ seg)))
                    ((or seg-empty? (> seg num-segments)))
-                 (set! seg-empty? (get-music-cell part seg)))))))
+                (set! seg-empty? (get-music-cell part seg)))))))
+
 
 templateInit =
 #(define-void-function
@@ -55,6 +58,7 @@ templateInit =
                     #}))
                 segments))))
 
+
 %%% ================================================================= [ Chords ]
 
 napChords =
@@ -81,6 +85,7 @@ napChords =
          >>
        #}))
 
+
 %%% ================================================================= [ Vocals ]
 
 colorLyrics =
@@ -93,10 +98,12 @@ colorLyrics =
      \override Lyrics.LyricExtender.color = $color
   #})
 
+
 stanza =
 #(define-music-function
    (parser location n) (number?)
    #{ \set stanza = #(format #f "~d. " n) #})
+
 
 napVox =
 #(define-music-function
@@ -114,6 +121,7 @@ napVox =
                 #{ \new Lyrics \lyricsto vox { \gridGetLyrics "vox" } #})
          >>
        #}))
+
 
 %%% ================================================================= [ Guitar ]
 
@@ -151,6 +159,7 @@ napGuitarStrum =
        }
      #})))
 
+
 napGuitarTab =
 #(define-music-function
    (parser location) ()
@@ -170,6 +179,7 @@ napGuitarTab =
        \gridGetMusic "guitar"
      }
    #})
+
 
 %% TODO: move logic determing whether to engrave chords and tabs to their
 %% respective functions
@@ -197,6 +207,7 @@ napGuitar =
        >>
      #}))
 
+
 %%% =================================================================== [ Bass ]
 
 napBass =
@@ -214,6 +225,7 @@ napBass =
             #{
               \new BassVoice = bass \gridGetMusic "bass"
             #})))
+
 
 %%% ================================================================== [ Drums ]
 
@@ -234,6 +246,7 @@ napBass =
       (lowmidtom     default #f          0)
       (lowtom        default #f         -1)
       (bassdrum      default #f         -3))))
+
 
 napDrums =
 #(define-music-function
@@ -264,6 +277,7 @@ napDrums =
        }
      #})))
 
+
 %%% ================================================================== [ Parts ]
 
 napIncludes =
@@ -283,6 +297,7 @@ napIncludes =
     (if (not (and (part-missing? "drums up")
                     (part-missing? "drums down")))
         #{ \include "parts/drums.ily" #}))
+
 
 %%% ================================================================== [ Score ]
 
@@ -311,5 +326,6 @@ Naptaker =
          #}))
      (ly:score-add-output-def! score layout)
      score))
+
 
 %%% ==================================================================== [ EOF ]
