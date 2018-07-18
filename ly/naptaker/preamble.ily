@@ -78,9 +78,30 @@ flam = \drummode {
   \acciaccatura { sn8 }
 }
 
+
 %% http://lilypondcookbook.com/post/75066991189/drum-music-9-flams-and-drags
 drag = \drummode {
   \once \override Stem.length = #4
   \once \override Slur.height-limit = #0.5
   \appoggiatura { sn8-\omit\ppp [ sn-\omit\ppp ] }
 }
+
+
+bye =
+#(define-music-function (parser location) ()
+   #{
+     \stopStaff \hideNotes
+     \omit Staff.Rest \omit Staff.MultiMeasureRest
+     \once {
+       \omit Staff.Clef \omit Staff.ClefModifier
+       \omit Staff.TimeSignature
+     }
+  #})
+
+
+hi =
+#(define-music-function (parser location) ()
+   #{
+     \startStaff \unHideNotes
+     \undo \omit Staff.Rest \undo \omit Staff.MultiMeasureRest
+   #})
