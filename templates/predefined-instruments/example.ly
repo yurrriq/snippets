@@ -1,4 +1,4 @@
-\version "2.19.1"
+\version "2.24.0"
 
 \include "instrument-context-definitions.ily"
 
@@ -35,10 +35,10 @@ text = \lyricmode {
     \new Lyrics \lyricsto bas \text
   >>
   \layout {
-    \override Staff.NoteHead #'color = #blue
-    \override AltoStaff.NoteHead #'color = #red
-    \override SopranoVoice.Stem #'color = #green
-    \override VocalStaff.Stem #'thickness = #4
+    \override Staff.NoteHead.color = #blue
+    \override AltoStaff.NoteHead.color = #red
+    \override SopranoVoice.Stem.color = #green
+    \override VocalStaff.Stem.thickness = #4
   }
   \midi {
     % it would be nice if eg. \set SopranoStaff.midiInstrument

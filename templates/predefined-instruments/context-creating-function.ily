@@ -1,4 +1,4 @@
-\version "2.19.10"
+\version "2.24.0"
 
 %{ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DESCRIPTION
 
@@ -38,7 +38,7 @@ define other instruments
 % derived from specified yyyStaff and yyyVoice contexts.
 newInstrument =
 #(define-scheme-function
-  (parser location name staff-settings voice-settings parent-name)
+  (name staff-settings voice-settings parent-name)
   (string?
    (ly:context-mod? #{ \with {} #})
    (ly:context-mod? #{ \with {} #})
@@ -48,7 +48,7 @@ newInstrument =
          (parent-name (if (string=? parent-name "default") "" parent-name))
          (parent-staff-name (string-append parent-name "Staff"))
          (parent-voice-name (string-append parent-name "Voice")))
-    (ly:parser-define! parser '$defaultlayout
+    (ly:parser-define! '$defaultlayout
       #{
         \layout {
           \context {
@@ -82,7 +82,7 @@ newInstrument =
         }
       #})
     ;; UGH! code duplication!
-    (ly:parser-define! parser '$defaultmidi
+    (ly:parser-define! '$defaultmidi
       #{
         \midi {
           \context {
